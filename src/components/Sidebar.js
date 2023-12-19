@@ -1,11 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import {
-  SHORTS_LOGO,
-  SUB_LOGO,
-  UTUBE_HOME_LOGO,
-  YOU_LOGO,
-} from "../utils/constants";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
