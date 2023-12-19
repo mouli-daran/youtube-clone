@@ -10,6 +10,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { cacheResult } from "../utils/searchSlice";
+import {closeOptions} from "../utils/menuSlice";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -22,6 +23,12 @@ const Header = () => {
   const handleMenuToggler = () => {
     dispatch(toggleMenu());
   };
+
+
+const isOptionOpen = useSelector((state) => state.menu.isOptionOpen);
+  const handleOptionToggler = () => {
+    dispatch(closeOptions());
+  }
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -58,9 +65,9 @@ try {
 }
   };
 
- 
+
   return (
-    <div className="grid grid-flow-col shadow-lg">
+    <div className="grid grid-flow-col shadow-lg"> 
       <div className=" flex col-span-1 m-1 py-1 px-3">
         <img
           src={HAM_LOGO}
@@ -87,7 +94,7 @@ try {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           onFocus={() => setShowSuggestions(true)}
-          onBlur={() => setShowSuggestions(false)}
+          onBlur={() => setShowSuggestions(false)}  
         />
         <img
           src={SEARCH_LOGO}
@@ -108,9 +115,26 @@ try {
           </div>
         )}
       </div>
-      <div className=" flex col-span-1 items-center gap-5">
-        <img src={DOTS_MENU} alt="" className="h-9 cursor-pointer" />
-        <img src={USER_LOGO} alt="" className="h-9 cursor-pointer" />
+      <div className=" flex col-span-1 items-center gap-4">
+        <div>
+        <img src={DOTS_MENU} alt="" className="h-9 cursor-pointer" onClick={() => {handleOptionToggler()}} />
+        {isOptionOpen && ( 
+        <div className="absolute right-48 border border-black bg-white m-2 p-2 text-lg cursor-pointer rounded-lg">
+          <h1 className="hover:bg-slate-100 p-1 rounded-lg">Your data in Youtube</h1>
+          <h1 className="hover:bg-slate-100 p-1 rounded-lg">Appearance: Device theme</h1>
+          <h1 className="hover:bg-slate-100 p-1 rounded-lg">Language: English</h1>
+          <h1 className="hover:bg-slate-100 p-1 rounded-lg">Restricted Mode: off</h1>
+          <h1 className="hover:bg-slate-100 p-1 rounded-lg">Location: India</h1>
+          <h1 className="hover:bg-slate-100 p-1 rounded-lg">Keyboard Shortcuts</h1>
+          <h1 className="hover:bg-slate-100 p-1 rounded-lg">Help</h1>
+          <h1 className="hover:bg-slate-100 p-1 rounded-lg">Send Feedback</h1>
+        </div>
+        )}
+        </div>
+        <div className="flex gap-1 border border-gray-700 p-1 rounded-2xl ">
+        <img src={USER_LOGO} alt="" className="h-6 cursor-pointer" />
+        <h1 className="text-blue-800">Sign In</h1>     
+        </div>       
       </div>
     </div>
   );

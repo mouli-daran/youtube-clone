@@ -18,9 +18,11 @@ const ButtonsList = () => {
     "Sachin"
   ];
   return (
-    <div className="flex flex-row gap-4 mx-8">
+    <div className="flex flex-row gap-4 mx-8 ">
       {names.map((name , index) => (
-        <Buttons key={index} name={name} />
+        <div>
+          <Buttons key={index} name={name} />
+        </div>
       ))}
      
     </div>

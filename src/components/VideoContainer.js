@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { YOUTUBE_API } from "../utils/constants";
 import VideoCard  from "./VideoCard";
 import { Link } from "react-router-dom";
-import Shimmer from "./Shimmer";
+import MultipleShimmer from "./Shimmer";
 
 const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
@@ -20,7 +20,7 @@ const VideoContainer = () => {
   };
 
   return videos.length === 0 ? 
-  (<Shimmer />) 
+  (<MultipleShimmer />) 
   : (
     <div className="flex flex-wrap m-3">
       {videos.map((video) => (

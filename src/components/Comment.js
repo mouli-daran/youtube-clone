@@ -2,7 +2,7 @@ import React from "react";
 import { DISLIKE_ICON, LIKE_ICON } from "../utils/constants";
 
 const Comment = ({ data }) => {
-  const { textDisplay, authorProfileImageUrl, authorDisplayName, likeCount , id } =
+  const { textDisplay, authorProfileImageUrl, authorDisplayName, likeCount } =
     data?.snippet?.topLevelComment?.snippet;
 
   const { totalReplyCount } = data;

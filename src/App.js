@@ -21,7 +21,7 @@ function App() {
         path : "watch",
         element : <WatchPage />,
       }
-    ]
+    ],
   }])
 
 
